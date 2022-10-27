@@ -4,7 +4,9 @@ using namespace std;
 
 typedef char ElemType;
 
-//Õ»µÄ¶¨Òå
+//å¦‚æœæ˜¯2è¿›åˆ¶è½¬8è¿›åˆ¶çš„è¯ï¼Œå°±äºŒè¿›åˆ¶æ ˆtopæ¯ä¸‰ä¸ªæ•°æå–ä¸€æ¬¡ï¼Œèµ‹å€¼ç»™ä¸€ä¸ªæ–°æ ˆçš„base
+
+//æ ˆçš„å®šä¹‰
 typedef struct
 {
 	ElemType* base;
@@ -12,7 +14,7 @@ typedef struct
 	//int stackSize;
 }sqStack;
 
-//Õ»µÄ³õÊ¼»¯
+//æ ˆçš„åˆå§‹åŒ–
 void InitStack(sqStack* s)
 {
 	s->base = new ElemType();
@@ -23,14 +25,14 @@ void InitStack(sqStack* s)
 	//s->stackSize = 0;
 }
 
-//Ñ¹Õ»²Ù×÷
+//å‹æ ˆæ“ä½œ
 void push(sqStack* s, ElemType r)
 {
 	*s->top = r;
 	s->top++;
 }
 
-//µ¯Õ»²Ù×÷
+//å¼¹æ ˆæ“ä½œ
 void pop(sqStack* s,ElemType*r) {
 	if (s->base == s->top) {
 		return;
@@ -38,7 +40,7 @@ void pop(sqStack* s,ElemType*r) {
 	*r = *--(s->top);
 }
 
-//ÇóÕ»µ±Ç°ÈİÁ¿
+//æ±‚æ ˆå½“å‰å®¹é‡
 int StackLen(sqStack s)
 {
 	return (s.top - s.base);
@@ -50,7 +52,7 @@ int main()
 	sqStack s;
 	InitStack(&s);
 	int len, i, sum = 0;
-	cout << "ÇëÊäÈëÒ»¸ö¶ş½øÖÆÊı£¬ÒÔ#½áÎ²´ú±í½áÊø£º";
+	cout << "è¯·è¾“å…¥ä¸€ä¸ªäºŒè¿›åˆ¶æ•°ï¼Œä»¥#ç»“å°¾ä»£è¡¨ç»“æŸï¼š";
 	scanf_s("%c", &c);
 	while (c != '#') {
 		push(&s, c);
@@ -62,5 +64,5 @@ int main()
 		pop(&s, &c);
 		sum += (c-48) * pow(2, i);
 	}
-	cout << "×ª»¯ÎªÊ®½øÖÆÎª£º" << sum << endl;
+	cout << "è½¬åŒ–ä¸ºåè¿›åˆ¶ä¸ºï¼š" << sum << endl;
 }
